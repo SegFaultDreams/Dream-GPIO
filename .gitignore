@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+
+# perso
+journal_reves.md
