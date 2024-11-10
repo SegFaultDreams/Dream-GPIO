@@ -56,6 +56,24 @@ def counts_to_uv(raw, gain):
     return raw * (2 * VREF / gain) / (2 ** 24) * 1e6
 
 
+def parse_frame(frame, gain=24):
+    """Découpe une trame de 27 octets. Retourne (status, [8 valeurs en uV])."""
+    if len(frame) != FRAME_BYTES:
+        raise ValueError(f"trame de {len(frame)} octets, j'en attends {FRAME_BYTES}")
+    status = (frame[0] << 16) | (frame[1] << 8) | frame[2]
+    # les 4 premiers bits du status valent toujours 1100, sinon on est désynchro
+    if (status >> 20) != 0b1100:
+        raise ValueError(f"status bizarre : {status:06X} (désynchro SPI ?)")
+    values = []
+    for ch in range(N_CHANNELS):
+        i = 3 + ch * 3
+        raw = (frame[i] << 16) | (frame[i + 1] << 8) | frame[i + 2]
+        if raw & 0x800000:  # complément à deux
+            raw -= 1 << 24
+        values.append(counts_to_uv(raw, gain))
+    return status, values
+
+
 class ADS1299:
     def __init__(self, bus=0, device=0, drdy_pin=17, reset_pin=22, start_pin=27,
                  sample_rate=250, gain=24):
@@ -128,6 +146,15 @@ class ADS1299:
     def stop(self):
         self.command(SDATAC)
         self.start_line.off()
+
+    def read_frame(self, timeout=1.0):
+        """Attend DRDY (actif bas) puis lit une trame."""
+        t0 = time.monotonic()
+        while self.drdy.value:  # pull-up : 1 tant que pas prêt
+            if time.monotonic() - t0 > timeout:
+                raise TimeoutError("pas de DRDY. START est bien à 1 ?")
+        frame = self.spi.xfer2([0x00] * FRAME_BYTES)
+        return parse_frame(bytes(frame), self.gain)
 
     def close(self):
         try:
