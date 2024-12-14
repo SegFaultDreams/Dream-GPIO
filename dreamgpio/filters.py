@@ -19,3 +19,9 @@ def clean(x, fs):
     """Chaîne par défaut pour le sommeil."""
     return bandpass(notch(x, fs), fs)
 
+
+def flat_or_saturated(x, fs, flat_uv=0.5, sat_uv=500.0):
+    """True si le segment ressemble à une électrode qui a bougé.
+    Les électrodes sèches bougent. Beaucoup. Surtout quand tu te retournes."""
+    x = np.asarray(x)
+    return bool(np.std(x) < flat_uv or np.max(np.abs(x)) > sat_uv)
