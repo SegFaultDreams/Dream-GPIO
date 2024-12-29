@@ -26,6 +26,8 @@ Les premières nuits ça laisse des petites marques rondes sur le cuir chevelu. 
 ## Câble
 
 Nappe 10 fils, sertie sur les pressions d'un côté, connecteur 2x5 de l'autre.
+Faire passer la nappe derrière la nuque et la fixer au col du t-shirt avec une pince,
+sinon tu te retournes et tu arraches tout. (Nuit du 29 décembre.)
 
 ## Impédance
 
