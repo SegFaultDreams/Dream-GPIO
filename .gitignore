@@ -1,6 +1,14 @@
 __pycache__/
 *.pyc
+*.egg-info/
 .venv/
+.pytest_cache/
+
+# données brutes : trop gros, et c'est ma tête
+data/
+*.csv
+
+.env
 
 # perso
 journal_reves.md

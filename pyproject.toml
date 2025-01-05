@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dreamgpio"
+version = "0.2.0"
+description = "EEG maison sur Raspberry Pi + ADS1299, staging du sommeil, sorties GPIO"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "SegFaultDreams" }]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26", "scipy>=1.11", "matplotlib>=3.8"]
+
+[project.optional-dependencies]
+pi = ["spidev>=3.6", "gpiozero>=2.0"]
+
+[project.scripts]
+dreamgpio = "dreamgpio.cli:main"
+
+[tool.setuptools]
+packages = ["dreamgpio"]
