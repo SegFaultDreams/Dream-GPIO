@@ -31,10 +31,10 @@ BANDS = {
 THRESHOLDS = {
     "wake_alpha": 0.28,
     "wake_beta": 0.22,
-    "n3_delta": 0.55,
+    "n3_delta": 0.75,
     "n2_sigma": 0.10,
     "rem_theta": 0.24,
-    "rem_eye": 2.5,
+    "rem_eye": 2.0,
 }
 
 STAGES = ["W", "N1", "N2", "N3", "REM", "?"]
