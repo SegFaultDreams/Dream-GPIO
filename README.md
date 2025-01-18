@@ -4,7 +4,7 @@ EEG maison sur Raspberry Pi. Huit électrodes sèches, un bonnet de bain, une ca
 et un peu trop de nuits blanches.
 
 Le but : enregistrer mes nuits, savoir à peu près quand je suis en sommeil paradoxal,
-et brancher ça sur des GPIO. Une LED, un vibreur, ce que tu veux.
+et brancher ça sur des GPIO. Une LED, un vibreur, Home Assistant, ce que tu veux.
 Du cerveau vers la maison. De la dreamIoT, si tu veux un mot qui n'existe pas.
 
 ![hypnogramme de la nuit du 8 janvier](nights/2025-01-08/hypnogramme.png)
@@ -17,6 +17,7 @@ Du cerveau vers la maison. De la dreamIoT, si tu veux un mot qui n'existe pas.
 - **filtrage** notch 50 Hz + passe-bande 0,5-35 Hz (`dreamgpio/filters.py`)
 - **staging** par époques de 30 s : W / N1 / N2 / N3 / REM (`dreamgpio/staging.py`)
 - **cues** LED et vibreur quand le REM dure (`dreamgpio/cues.py`), désactivé par défaut
+- **MQTT** le stade courant publié sur `dreamgpio/stage` (`dreamgpio/mqtt_bridge.py`)
 
 ## Ce que ça ne fait pas
 
@@ -71,9 +72,19 @@ dreamgpio check
 # 2. dormir
 dreamgpio record --out data/raw
 
+# 2 bis. dormir avec les cues REM et Home Assistant
+dreamgpio record --out data/raw --cues --mqtt 192.168.1.20
+
 # 3. le lendemain matin, sur le laptop
 dreamgpio stage data/raw/nuit_2025-01-08_2341.csv --save stades.txt
 python scripts/plot_night.py data/raw/nuit_2025-01-08_2341.csv --start 23:41 --out nights/2025-01-08
+```
+
+Les tests tournent sans le Pi (données synthétiques) :
+
+```bash
+pip install pytest
+pytest
 ```
 
 ## Licence

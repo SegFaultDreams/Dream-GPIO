@@ -27,12 +27,15 @@ def cmd_check(args):
 
 def cmd_record(args):
     from .acquire import record
-    cue = None
+    cue = pub = None
     if args.cues:
         from .cues import RemCue
         cue = RemCue(enabled=True)
+    if args.mqtt:
+        from .mqtt_bridge import StagePublisher
+        pub = StagePublisher(host=args.mqtt)
     record(args.out, sample_rate=args.rate, gain=args.gain,
-           live=bool(cue), cue=cue, max_hours=args.max_hours)
+           live=bool(cue or pub), cue=cue, publisher=pub, max_hours=args.max_hours)
 
 
 def cmd_stage(args):
@@ -63,6 +66,7 @@ def main(argv=None):
     r.add_argument("--rate", type=int, default=250)
     r.add_argument("--gain", type=int, default=24)
     r.add_argument("--cues", action="store_true", help="active LED/vibreur en REM (lis cues.py avant)")
+    r.add_argument("--mqtt", metavar="HOST", help="publie le stade sur ce broker")
     r.add_argument("--max-hours", type=float, default=None)
     r.set_defaults(func=cmd_record)
 
