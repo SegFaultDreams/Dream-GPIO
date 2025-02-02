@@ -87,6 +87,23 @@ pip install pytest
 pytest
 ```
 
+## FAQ
+
+**Ça marche avec des électrodes à gel ?**
+Oui, et le signal est meilleur. J'ai essayé une semaine. Tu te réveilles avec du gel
+dans les cheveux et sur l'oreiller. Électrodes sèches, bonnet, et tant pis pour l'impédance.
+
+**Pourquoi pas un OpenBCI ?**
+Parce que c'est cher et parce que je voulais comprendre ce qu'il y a dedans.
+(Il y a un ADS1299 dedans.)
+
+**Ça marche sur ta machine ?**
+Il marche sur ma machine.
+
+**Tu fais quoi de tes données ?**
+Rien ne sort du Pi sauf le stade courant sur MQTT, en local. Les CSV bruts restent chez moi,
+ils sont dans le `.gitignore`. Comme le reste de ce qui est perso.
+
 ## Licence
 
 MIT. Fais-en ce que tu veux, mais si tua s une idée pour le N1, ouvre une issue.
