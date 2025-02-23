@@ -1,6 +1,7 @@
 import numpy as np
 
 from dreamgpio.ads1299 import parse_frame, counts_to_uv
+from dreamgpio.cues import RemCue
 from dreamgpio.staging import stage_night, summary
 
 from synth import FS, night
@@ -37,3 +38,8 @@ def test_summary_latence():
     assert s["rem_latency_min"] is not None
     assert 10 <= s["rem_latency_min"] <= 20
 
+
+def test_cue_cooldown():
+    cue = RemCue(enabled=False, min_rem_epochs=3, cooldown_s=600)
+    fired = [cue.update("REM", now=30 * i) for i in range(30)]
+    assert fired.count(True) == 2  # une fois à 3 époques, puis après 600 s

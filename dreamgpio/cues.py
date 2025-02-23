@@ -27,7 +27,7 @@ class RemCue:
         self.cooldown_s = cooldown_s
         self.led_max = led_max  # 15 % max. au-delà ça réveille, point
         self._streak = 0
-        self._last_cue = 0.0
+        self._last_cue = float("-inf")
         self.led = PWMLED(led_pin) if (enabled and PWMLED) else None
         self.vib = DigitalOutputDevice(vib_pin) if (enabled and DigitalOutputDevice) else None
 
@@ -47,7 +47,10 @@ class RemCue:
     def fire(self, pulses=3):
         for _ in range(pulses):
             if self.led:
-                self.led.pulse(fade_in_time=0.8, fade_out_time=0.8, n=1, background=False)
+                # rampe à la main : pulse() de gpiozero monte à 100 %, beaucoup trop
+                for k in list(range(0, 21)) + list(range(20, -1, -1)):
+                    self.led.value = self.led_max * k / 20
+                    time.sleep(0.04)
             if self.vib:
                 self.vib.on()
                 time.sleep(0.15)
