@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dreamgpio"
-version = "0.2.0"
+version = "0.3.0"
 description = "EEG maison sur Raspberry Pi + ADS1299, staging du sommeil, sorties GPIO"
 readme = "README.md"
 license = { text = "MIT" }

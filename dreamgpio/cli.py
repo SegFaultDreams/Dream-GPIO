@@ -20,7 +20,10 @@ def cmd_check(args):
     finally:
         adc.close()
     arr = np.array(frames)
-    print("p2p par voie (uV) :", np.round(np.ptp(arr, axis=0), 1))
+    print("voie   min(uV)    max(uV)   p2p(uV)")
+    for ch in range(arr.shape[1]):
+        col = arr[:, ch]
+        print(f"CH{ch + 1}  {col.min():9.1f}  {col.max():9.1f}  {np.ptp(col):8.1f}")
     print("Tu dois voir le même signal carré (quelques mV) sur les 8 voies.")
     print("Une voie plate = soudure. Toutes plates = SPI ou START.")
 
