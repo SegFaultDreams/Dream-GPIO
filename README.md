@@ -1,5 +1,7 @@
 # Dream-GPIO
 
+> **En pause** quelques semaines. Je teste un autre hardware. Je reviens avec des courbes.
+
 EEG maison sur Raspberry Pi. Huit électrodes sèches, un bonnet de bain, une carte ADS1299
 et un peu trop de nuits blanches.
 
