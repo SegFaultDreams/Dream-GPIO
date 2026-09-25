@@ -1,13 +1,13 @@
 # Dream-GPIO
 
-> **En pause** quelques semaines. Je teste un autre hardware. Je reviens avec des courbes.
+> **En pause** quelques semaines. Je teste un autre hardware. Je reviens !
 
-EEG maison sur Raspberry Pi. Huit électrodes sèches, un bonnet de bain, une carte ADS1299
+EEG maison sur Raspberry Pi. Huit électrodes sèches, un bonnet en silicone, une carte ADS1299
 et un peu trop de nuits blanches.
 
 Le but : enregistrer mes nuits, savoir à peu près quand je suis en sommeil paradoxal,
 et brancher ça sur des GPIO. Une LED, un vibreur, Home Assistant, ce que tu veux.
-Du cerveau vers la maison. De la dreamIoT, si tu veux un mot qui n'existe pas.
+Du cerveau vers la télé ! De la dreamIoT, si tu veux un mot qui n'existe pas.
 
 ![hypnogramme de la nuit du 8 janvier](nights/2025-01-08/hypnogramme.png)
 
@@ -23,7 +23,7 @@ Du cerveau vers la maison. De la dreamIoT, si tu veux un mot qui n'existe pas.
 
 ## Ce que ça ne fait pas
 
-Du médical. C'est un projet perso, pas un dispositif médical, pas un diagnostic.
+C'est un projet perso, pas un dispositif médical, pas un diagnostic.
 Le staging est une heuristique réglée sur UNE tête (la mienne). Sans EMG ni vrai EOG,
 il confond N1 et REM dès que les frontales sont mal posées. Si tu veux du sérieux,
 regarde [YASA](https://github.com/raphaelvallat/yasa).
@@ -45,7 +45,7 @@ Fabrication du bonnet : [`hardware/bonnet.md`](hardware/bonnet.md).
 
 ## Sécurité (lis ça, vraiment)
 
-Tu mets des électrodes sur ta tête et tu dors avec. Quelques règles :
+Tu mets des électrodes sur ta tête et tu dors avec ! Quelques règles :
 
 - **Jamais de secteur.** Le Pi et la carte sont sur batterie USB pendant l'enregistrement.
   Pas de chargeur branché, pas de câble vers un PC branché au mur, pas d'écran HDMI.
