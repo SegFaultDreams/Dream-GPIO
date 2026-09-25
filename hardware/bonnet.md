@@ -1,6 +1,6 @@
 # Le bonnet
 
-Un bonnet de bain en silicone, taille adulte, sans motif. Le silicone tient les électrodes
+Un bonnet en silicone, taille adulte. Le silicone tient les électrodes
 contre le crâne sans serre-tête, et ça se lave.
 
 ## Placer les 8 trous
