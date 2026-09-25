@@ -109,3 +109,12 @@ ils sont dans le `.gitignore`. Comme le reste de ce qui est perso.
 ## Licence
 
 MIT. Fais-en ce que tu veux, mais si tua s une idée pour le N1, ouvre une issue.
+
+## Bienvenue dans l'Univers Hyperdream !
+
+Cher visiteur, bonjour et bienvenue.
+Vous venez d'entrer dans l'univers de l'œuvre de fiction Hyperdream.
+Ce repo est une extension de cette création littéraire, conçue comme une expérience parallèle.
+Ce repo fait partie d'une fiction interactive conçue pour stimuler l’imaginaire. Toute ressemblance avec des procédés médicaux réels est fortuite !
+La personne sur la photo, Elias ARMAND dans le livre, n'existe pas !
+
